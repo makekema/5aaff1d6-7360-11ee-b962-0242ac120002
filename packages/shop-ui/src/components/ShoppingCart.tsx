@@ -27,41 +27,44 @@ export function ShoppingCart({ viewModel }: { viewModel: CartViewModel }) {
          className="column"
          style={{ display: "flex", flexDirection: "column", gap: "3rem" }}
       >
-      {!isModalOpen && (
-
-         <div className="card">
-            <header>
-               <h4>Shopping cart</h4>
-            </header>
-            <hr />
-            <table className="table-auto">
-               <tbody>
-                  {cartBikesTableRows}
-                  {viewModel.bikes.length > 1 ||
-                  viewModel.bikes.some((bike) => bike.count > 1) ? (
-                     <tr>
-                        <td className="">Discount</td>
-                        <td className="text-right">
-                           {viewModel.discountInPercent} %
+         {!isModalOpen && (
+            <div className="card">
+               <header>
+                  <h4>Shopping cart</h4>
+               </header>
+               <hr />
+               <table className="table-auto">
+                  <tbody>
+                     {cartBikesTableRows}
+                     {viewModel.bikes.length > 1 ||
+                     viewModel.bikes.some((bike) => bike.count > 1) ? (
+                        <tr>
+                           <td className="">Discount</td>
+                           <td className="text-right">
+                              {viewModel.discountInPercent} %
+                           </td>
+                           <td className="text-right">-{viewModel.discount}</td>
+                        </tr>
+                     ) : null}
+                     <tr
+                        style={{
+                           borderTop: "1px solid var(--color-lightGrey)",
+                        }}
+                     >
+                        <td>
+                           <b>Total:</b>
                         </td>
-                        <td className="text-right">-{viewModel.discount}</td>
+                        <td />
+                        <td className="text-right">
+                           <b>{viewModel.totalPrice}</b>
+                        </td>
+                        <td />
                      </tr>
-                  ) : null}
-                  <tr style={{ borderTop: "1px solid var(--color-lightGrey)" }}>
-                     <td>
-                        <b>Total:</b>
-                     </td>
-                     <td />
-                     <td className="text-right">
-                        <b>{viewModel.totalPrice}</b>
-                     </td>
-                     <td />
-                  </tr>
-               </tbody>
-            </table>
-            {!isModalOpen && <CheckoutButton setModalOpen={setModalOpen} />}
-         </div>
-      )}
+                  </tbody>
+               </table>
+               {!isModalOpen && <CheckoutButton setModalOpen={setModalOpen} />}
+            </div>
+         )}
          {isModalOpen && (
             <CheckoutModal onClose={handleCloseModal} viewModel={viewModel} />
          )}
