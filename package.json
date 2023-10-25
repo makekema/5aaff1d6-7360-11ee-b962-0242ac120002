@@ -1,0 +1,32 @@
+{
+   "name": "bikeshop",
+   "private": true,
+   "workspaces": [
+      "packages/shop",
+      "packages/shop-ui"
+   ],
+   "scripts": {
+      "start": "npm run build && concurrently \"npm run watch --workspaces\" \"npm run start --workspace=@bikeshop/shop-ui\"",
+      "build": "npm run clean --workspaces --if-present && npm run build --workspaces --if-present",
+      "clean": "npm run clean --workspaces --if-present",
+      "test": "npm run test --workspaces --if-present -- --ci",
+      "prettier": "prettier --write {**/*,*}.{json,ts,tsx}"
+   },
+   "prettier": {
+      "tabWidth": 3,
+      "semi": false,
+      "singleQuote": false,
+      "trailingComma": "es5"
+   },
+   "devDependencies": {
+      "jest": "29.5.0",
+      "ts-jest": "29.1.0",
+      "@types/jest": "29.5.0",
+      "prettier": "2.8.7",
+      "rimraf": "5.0.0",
+      "concurrently": "8.0.1"
+   },
+   "engines": {
+      "node": ">=16.0.0"
+   }
+}

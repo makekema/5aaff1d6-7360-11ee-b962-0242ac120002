@@ -1,0 +1,13 @@
+{
+   "extends": "../../tsconfig.base.json",
+   "compilerOptions": {
+      "module": "es6",
+      "lib": ["es2021"],
+      "moduleResolution": "node",
+      "outDir": "build",
+      "declaration": true,
+      "declarationDir": "build"
+   },
+   "include": ["src"],
+   "exclude": ["build", "**/*.test.ts"]
+}

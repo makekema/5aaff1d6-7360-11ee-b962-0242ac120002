@@ -1,0 +1,16 @@
+{
+   "name": "@bikeshop/shop",
+   "version": "3.0.0",
+   "private": true,
+   "main": "build/index.js",
+   "typings": "build/index.d.ts",
+   "devDependencies": {
+      "typescript": "5.0.4"
+   },
+   "scripts": {
+      "watch": "tsc --watch",
+      "build": "tsc",
+      "test": "jest",
+      "clean": "rimraf build"
+   }
+}
