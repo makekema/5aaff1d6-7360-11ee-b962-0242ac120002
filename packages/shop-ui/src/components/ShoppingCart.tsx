@@ -27,6 +27,8 @@ export function ShoppingCart({ viewModel }: { viewModel: CartViewModel }) {
          className="column"
          style={{ display: "flex", flexDirection: "column", gap: "3rem" }}
       >
+      {!isModalOpen && (
+
          <div className="card">
             <header>
                <h4>Shopping cart</h4>
@@ -59,6 +61,7 @@ export function ShoppingCart({ viewModel }: { viewModel: CartViewModel }) {
             </table>
             {!isModalOpen && <CheckoutButton setModalOpen={setModalOpen} />}
          </div>
+      )}
          {isModalOpen && (
             <CheckoutModal onClose={handleCloseModal} viewModel={viewModel} />
          )}
